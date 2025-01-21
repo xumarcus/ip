@@ -1,14 +1,21 @@
 public abstract class Task {
+    public enum TaskStatus {
+        DONE,
+        UNDONE
+    }
     protected String taskName;
-    protected boolean isDone;
+    protected TaskStatus status;
 
     public Task(String taskName) {
         this.taskName = taskName;
-        this.isDone = false;
+        this.status = TaskStatus.UNDONE;
     }
 
     public String getStatusIcon() {
-        return (isDone ? "X" : " "); // mark done task with X
+        return switch (status) {
+            case DONE -> "X";
+            case UNDONE -> " ";
+        };
     }
 
     public abstract String getTypeIcon();
@@ -16,11 +23,11 @@ public abstract class Task {
     public abstract String getDescription();
 
     public void markAsDone() {
-        isDone = true;
+        status = TaskStatus.DONE;
     }
 
     public void markAsUndone() {
-        isDone = false;
+        status = TaskStatus.UNDONE;
     }
 
     @Override
