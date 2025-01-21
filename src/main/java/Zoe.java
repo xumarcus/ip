@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.ListIterator;
+import java.util.List;
 import java.util.Scanner;
 
 public class Zoe {
@@ -7,22 +7,18 @@ public class Zoe {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hello! I'm Zoe\nWhat can I do for you?\n");
 
-        ArrayList<String> tasks = new ArrayList<>();
-        io:
+        List<Executor> executors = new ArrayList<>();
+        executors.add(new ListExecutor());
+        executors.add(new MarkTaskExecutor());
+        executors.add(new UnmarkTaskExecutor());
+        executors.add(new AddTaskExecutor());
+
+        List<Task> tasks = new ArrayList<>();
         while (true) {
-            String command = scanner.nextLine();
-            switch (command) {
-                case "bye":
-                    break io;
-                case "list":
-                    for (ListIterator<String> iter = tasks.listIterator(); iter.hasNext();) {
-                        System.out.printf("%d. %s\n", iter.nextIndex() + 1, iter.next());
-                    }
-                    break;
-                default:
-                    tasks.add(command);
-                    System.out.printf("added: %s\n", command);
-                    break;
+            String command = scanner.nextLine().trim();
+            if (command.equals("bye")) break;
+            for (Executor executor : executors) {
+                if (executor.run(command, tasks)) break;
             }
         }
         System.out.println("Bye. Hope to see you again soon!");
