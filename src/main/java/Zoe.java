@@ -11,14 +11,16 @@ public class Zoe {
         executors.add(new ListExecutor());
         executors.add(new MarkTaskExecutor());
         executors.add(new UnmarkTaskExecutor());
-        executors.add(new AddTaskExecutor());
+        executors.add(new TodoExecutor());
+        executors.add(new DeadlineExecutor());
+        executors.add(new EventExecutor());
 
-        List<Task> tasks = new ArrayList<>();
+        TaskList taskList = new TaskList();
         while (true) {
             String command = scanner.nextLine().trim();
             if (command.equals("bye")) break;
-            for (Executor executor : executors) {
-                if (executor.run(command, tasks)) break;
+            if (executors.stream().noneMatch(executor -> executor.run(command, taskList))) {
+                System.out.println("!");
             }
         }
         System.out.println("Bye. Hope to see you again soon!");

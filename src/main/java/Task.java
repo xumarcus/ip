@@ -1,15 +1,19 @@
-public class Task {
-    protected String description;
+public abstract class Task {
+    protected String taskName;
     protected boolean isDone;
 
-    public Task(String description) {
-        this.description = description;
+    public Task(String taskName) {
+        this.taskName = taskName;
         this.isDone = false;
     }
 
     public String getStatusIcon() {
         return (isDone ? "X" : " "); // mark done task with X
     }
+
+    public abstract String getTypeIcon();
+
+    public abstract String getDescription();
 
     public void markAsDone() {
         isDone = true;
@@ -21,6 +25,6 @@ public class Task {
 
     @Override
     public String toString() {
-        return String.format("[%s] %s", getStatusIcon(), description);
+        return String.format("[%s][%s] %s", getTypeIcon(), getStatusIcon(), getDescription());
     }
 }
