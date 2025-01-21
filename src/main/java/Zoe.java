@@ -14,13 +14,19 @@ public class Zoe {
         executors.add(new TodoExecutor());
         executors.add(new DeadlineExecutor());
         executors.add(new EventExecutor());
+        executors.add(new DefaultExecutor());
 
         TaskList taskList = new TaskList();
         while (true) {
             String command = scanner.nextLine().trim();
             if (command.equals("bye")) break;
-            if (executors.stream().noneMatch(executor -> executor.run(command, taskList))) {
-                System.out.println("!");
+            for (Executor executor : executors) {
+                try {
+                    if (executor.run(command, taskList)) break;
+                } catch (ZoeException e) {
+                    System.out.println(e.getMessage());
+                    break;
+                }
             }
         }
         System.out.println("Bye. Hope to see you again soon!");

@@ -1,3 +1,3 @@
 interface Executor {
-    boolean run(String command, TaskList taskList);
+    boolean run(String command, TaskList taskList) throws ZoeException;
 }
