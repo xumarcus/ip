@@ -11,6 +11,7 @@ public class Zoe {
         executors.add(new ListExecutor());
         executors.add(new MarkTaskExecutor());
         executors.add(new UnmarkTaskExecutor());
+        executors.add(new DeleteExecutor());
         executors.add(new TodoExecutor());
         executors.add(new DeadlineExecutor());
         executors.add(new EventExecutor());
