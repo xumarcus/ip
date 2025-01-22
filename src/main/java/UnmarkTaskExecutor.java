@@ -11,11 +11,11 @@ public class UnmarkTaskExecutor implements Executor {
         Matcher matcher = PATTERN.matcher(command);
         if (matcher.matches()) {
             int index = Integer.parseInt(matcher.group(1)) - 1;
-            if (taskList.hasIndex(index)) {
-                Task task = taskList.get(index);
+            try (TaskList.TaskResource resource = taskList.with(index)) {
+                Task task = resource.getTask();
                 task.markAsUndone();
                 System.out.println("OK, I've marked this task as not done yet:");
-                System.out.printf("\t%s\n", task);
+                System.out.printf("\t%s\n", task.getFullDescription());
             }
             return true;
         }
