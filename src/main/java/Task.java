@@ -1,14 +1,16 @@
+import lombok.Data;
+
+@Data
 public abstract class Task {
     public enum TaskStatus {
         DONE,
         UNDONE
     }
-    protected String taskName;
-    protected TaskStatus status;
+    protected final String taskName;
+    protected TaskStatus status = TaskStatus.UNDONE;
 
     public Task(String taskName) {
         this.taskName = taskName;
-        this.status = TaskStatus.UNDONE;
     }
 
     public String getStatusIcon() {
@@ -30,8 +32,7 @@ public abstract class Task {
         status = TaskStatus.UNDONE;
     }
 
-    @Override
-    public String toString() {
+    public String getFullDescription() {
         return String.format("[%s][%s] %s", getTypeIcon(), getStatusIcon(), getDescription());
     }
 }
