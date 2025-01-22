@@ -24,7 +24,7 @@ public class TaskList {
 
     private final static Gson gson = new GsonBuilder()
             .registerTypeHierarchyAdapter(Task.class, new TaskTypeAdapter()).create();
-    private final String PATH = "./data/zoe.txt";
+    private final String PATH = "data/zoe.txt";
     private List<Task> tasks;
 
     public TaskList() {
