@@ -12,10 +12,7 @@ public class DeleteExecutor implements Executor {
         Matcher matcher = PATTERN.matcher(command);
         if (matcher.matches()) {
             int index = Integer.parseInt(matcher.group(1)) - 1;
-            if (taskList.hasIndex(index)) {
-                Task task = taskList.get(index);
-                taskList.remove(task);
-            }
+            taskList.remove(index);
             return true;
         }
         return false;
