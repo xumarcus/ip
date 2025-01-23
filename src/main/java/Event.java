@@ -1,12 +1,15 @@
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class Event extends Task {
     private final String taskName;
-    private final String from;
-    private final String to;
+    private final LocalDate from;
+    private final LocalDate to;
 
     @Override
     public String getTypeIcon() {
@@ -15,6 +18,7 @@ public class Event extends Task {
 
     @Override
     public String getDescription() {
-        return String.format("%s (from: %s to: %s)", taskName, from, to);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM d yyyy");
+        return String.format("%s (from: %s to: %s)", taskName, from.format(formatter), to.format(formatter));
     }
 }
