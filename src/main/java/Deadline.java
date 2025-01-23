@@ -4,12 +4,8 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class Deadline extends Task {
+    private final String taskName;
     private final String by;
-
-    public Deadline(String taskName, String by) {
-        super(taskName);
-        this.by = by;
-    }
 
     @Override
     public String getTypeIcon() {

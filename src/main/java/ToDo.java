@@ -4,9 +4,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class ToDo extends Task {
-    public ToDo(String taskName) {
-        super(taskName);
-    }
+    private final String taskName;
 
     @Override
     public String getTypeIcon() {

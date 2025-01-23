@@ -6,17 +6,7 @@ public abstract class Task {
         DONE,
         UNDONE
     }
-    protected final String taskName;
     protected TaskStatus status = TaskStatus.UNDONE;
-
-    // Lombok needs a default constructor in the base class
-    public Task() {
-        this.taskName = "";
-    }
-
-    public Task(String taskName) {
-        this.taskName = taskName;
-    }
 
     public String getStatusIcon() {
         return switch (status) {
