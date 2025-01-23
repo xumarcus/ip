@@ -1,15 +1,14 @@
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class Deadline extends Task {
-    private final String by;
-
-    public Deadline(String taskName, String by) {
-        super(taskName);
-        this.by = by;
-    }
+    private final String taskName;
+    private final LocalDate by;
 
     @Override
     public String getTypeIcon() {
@@ -18,6 +17,7 @@ public class Deadline extends Task {
 
     @Override
     public String getDescription() {
-        return String.format("%s (by: %s)", taskName, by);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM d yyyy");
+        return String.format("%s (by: %s)", taskName, by.format(formatter));
     }
 }
