@@ -7,16 +7,16 @@ Now you have 1 tasks in your list.
 Nice! I've marked this task as done:
 	[T][X] borrow book
 Got it. I've added this task:
-	[D][ ] return book (by: Sunday)
+	[D][ ] return book (by: Oct 15 2019)
 Now you have 2 tasks in your list.
 Got it. I've added this task:
-	[E][ ] project meeting (from: Mon 2pm to: 4pm)
+	[E][ ] project meeting (from: Oct 16 2019 to: Oct 17 2019)
 Now you have 3 tasks in your list.
 OOPS!!! The description of a todo cannot be empty.
 OOPS!!! I'm sorry, but I don't know what that means :-(
 Noted. I've removed this task:
-	[D][ ] return book (by: Sunday)
+	[D][ ] return book (by: Oct 15 2019)
 Now you have 2 tasks in your list.
 1. [T][X] borrow book
-2. [E][ ] project meeting (from: Mon 2pm to: 4pm)
+2. [E][ ] project meeting (from: Oct 16 2019 to: Oct 17 2019)
 Bye. Hope to see you again soon!
