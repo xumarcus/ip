@@ -3,7 +3,7 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class ToDo extends Task {
+public class Todo extends Task {
     private final String taskName;
 
     @Override
