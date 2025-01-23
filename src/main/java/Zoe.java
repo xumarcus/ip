@@ -1,35 +1,37 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 public class Zoe {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Hello! I'm Zoe\nWhat can I do for you?\n");
+    private final Storage storage;
+    private TaskList taskList;
+    private final Ui ui;
 
-        List<Executor> executors = new ArrayList<>();
-        executors.add(new ListExecutor());
-        executors.add(new MarkTaskExecutor());
-        executors.add(new UnmarkTaskExecutor());
-        executors.add(new DeleteExecutor());
-        executors.add(new TodoExecutor());
-        executors.add(new DeadlineExecutor());
-        executors.add(new EventExecutor());
-        executors.add(new DefaultExecutor());
+    public Zoe(String filePath) {
+        ui = new Ui();
+        storage = new Storage(filePath);
+        try {
+            taskList = new TaskList(storage.load());
+        } catch (ZoeIOException e) {
+            taskList = new TaskList();
+        }
+    }
 
-        TaskList taskList = new TaskList();
-        while (true) {
-            String command = scanner.nextLine().trim();
-            if (command.equals("bye")) break;
-            for (Executor executor : executors) {
-                try {
-                    if (executor.run(command, taskList)) break;
-                } catch (ZoeException e) {
-                    System.out.println(e.getMessage());
-                    break;
-                }
+    public void run() {
+        ui.showWelcome();
+        boolean isExit = false;
+        while (!isExit) {
+            try {
+                String fullCommand = ui.readCommand();
+                ui.showDividerLine();
+                Command c = Parser.parse(fullCommand);
+                c.execute(storage, taskList, ui);
+                isExit = c.isExit();
+            } catch (ZoeException e) {
+                ui.showError(e);
+            } finally {
+                ui.showDividerLine();
             }
         }
-        System.out.println("Bye. Hope to see you again soon!");
+    }
+
+    public static void main(String[] args) {
+        new Zoe("data/zoe.txt").run();
     }
 }
