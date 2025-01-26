@@ -1,3 +1,5 @@
+package zoe.task;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

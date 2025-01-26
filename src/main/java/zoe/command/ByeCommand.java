@@ -1,4 +1,9 @@
+package zoe.command;
+
 import lombok.NoArgsConstructor;
+import zoe.storage.Storage;
+import zoe.task.TaskList;
+import zoe.ui.Ui;
 
 @NoArgsConstructor
 public class ByeCommand implements Command {

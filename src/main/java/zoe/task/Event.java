@@ -1,3 +1,5 @@
+package zoe.task;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -6,18 +8,19 @@ import java.time.format.DateTimeFormatter;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class Deadline extends Task {
+public class Event extends Task {
     private final String taskName;
-    private final LocalDate by;
+    private final LocalDate from;
+    private final LocalDate to;
 
     @Override
     public String getTypeIcon() {
-        return "D";
+        return "E";
     }
 
     @Override
     public String getDescription() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM d yyyy");
-        return String.format("%s (by: %s)", taskName, by.format(formatter));
+        return String.format("%s (from: %s to: %s)", taskName, from.format(formatter), to.format(formatter));
     }
 }

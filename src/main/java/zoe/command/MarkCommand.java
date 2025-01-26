@@ -1,16 +1,23 @@
+package zoe.command;
+
 import lombok.AllArgsConstructor;
+import zoe.ZoeException;
+import zoe.storage.Storage;
+import zoe.task.Task;
+import zoe.task.TaskList;
+import zoe.ui.Ui;
 
 @AllArgsConstructor
-public class UnmarkCommand implements Command {
-    public static final String COMMAND_WORD = "unmark";
+public class MarkCommand implements Command {
+    public static final String COMMAND_WORD = "mark";
     private final int index;
 
     @Override
     public void execute(Storage storage, TaskList taskList, Ui ui) throws ZoeException {
         Task task = taskList.get(index);
-        task.markAsUndone();
+        task.markAsDone();
         storage.save(taskList);
-        ui.showUnmarkedTask(task);
+        ui.showMarkedTask(task);
     }
 
     @Override

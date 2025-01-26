@@ -1,3 +1,11 @@
+package zoe;
+
+import zoe.command.Command;
+import zoe.command.Parser;
+import zoe.storage.Storage;
+import zoe.task.TaskList;
+import zoe.ui.Ui;
+
 public class Zoe {
     private final Storage storage;
     private TaskList taskList;

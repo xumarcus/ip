@@ -1,4 +1,7 @@
+package zoe.adapters.gson;
+
 import com.google.gson.*;
+import zoe.task.Task;
 
 import java.lang.reflect.Type;
 import java.time.LocalDate;
