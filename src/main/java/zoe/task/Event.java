@@ -6,6 +6,14 @@ import lombok.EqualsAndHashCode;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Represents an Event task, which has a task name and a specific time period
+ * defined by a start date (from) and an end date (to).
+ * Extends the {@code Task} class to inherit common task properties.
+ * Includes methods for getting the task type icon and formatted description.
+ *
+ * @author
+ */
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class Event extends Task {
@@ -13,11 +21,22 @@ public class Event extends Task {
     private final LocalDate from;
     private final LocalDate to;
 
+    /**
+     * Returns the type icon of this task.
+     *
+     * @return A single-character string representing the type of the task, "E" for Event.
+     */
     @Override
     public String getTypeIcon() {
         return "E";
     }
 
+    /**
+     * Returns a formatted description of the Event task.
+     * The description includes the task name and the time period formatted as "MMM d yyyy".
+     *
+     * @return A string representing the description of the task.
+     */
     @Override
     public String getDescription() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM d yyyy");

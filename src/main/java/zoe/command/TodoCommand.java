@@ -9,6 +9,11 @@ import zoe.task.TaskList;
 import zoe.task.Todo;
 import zoe.ui.Ui;
 
+/**
+ * Represents a command to create a Todo task.
+ * This command adds a new Todo task to the task list, saves it in storage,
+ * and displays the added task to the user via the UI.
+ */
 @Getter
 @AllArgsConstructor
 public class TodoCommand implements Command {

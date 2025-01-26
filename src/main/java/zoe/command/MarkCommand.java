@@ -8,6 +8,11 @@ import zoe.task.Task;
 import zoe.task.TaskList;
 import zoe.ui.Ui;
 
+/**
+ * Represents a command to mark a task as completed in the task list.
+ * This command retrieves the task from the specified index, marks it as done,
+ * saves the updated task list to storage, and displays the updated task via the {@link Ui}.
+ */
 @Getter
 @AllArgsConstructor
 public class MarkCommand implements Command {
