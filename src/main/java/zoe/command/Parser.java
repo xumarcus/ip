@@ -16,7 +16,7 @@ public class Parser {
         }
         
         String commandWord = matcher.group("commandWord");
-        String arguments = matcher.group("arguments");
+        String arguments = matcher.group("arguments").trim();
         return switch (commandWord) {
             case TodoCommand.COMMAND_WORD -> prepareTodo(arguments);
             case DeadlineCommand.COMMAND_WORD -> prepareDeadline(arguments);
@@ -30,15 +30,14 @@ public class Parser {
         };
     }
 
-    public static Command prepareTodo(String arguments) {
-        String taskName = arguments.trim();
-        if (taskName.isEmpty()) {
+    private static Command prepareTodo(String arguments) {
+        if (arguments.isEmpty()) {
             return new IncorrectCommand("OOPS!!! The description of a todo cannot be empty.");
         }
-        return new TodoCommand(taskName);
+        return new TodoCommand(arguments);
     }
 
-    public static Command prepareDeadline(String arguments) {
+    private static Command prepareDeadline(String arguments) {
         final Pattern PATTERN = Pattern.compile("^(.+) /by (\\d{4}-\\d{2}-\\d{2})$");
         Matcher matcher = PATTERN.matcher(arguments);
         if (matcher.matches()) {
@@ -53,7 +52,7 @@ public class Parser {
         return new IncorrectCommand();
     }
 
-    public static Command prepareEvent(String arguments) {
+    private static Command prepareEvent(String arguments) {
         final Pattern PATTERN = Pattern.compile("^(.+) /from (\\d{4}-\\d{2}-\\d{2}) /to (\\d{4}-\\d{2}-\\d{2})$");
         Matcher matcher = PATTERN.matcher(arguments);
         if (matcher.matches()) {
@@ -69,7 +68,7 @@ public class Parser {
         return new IncorrectCommand();
     }
 
-    public static Command prepareDelete(String arguments) {
+    private static Command prepareDelete(String arguments) {
         try {
             int index = Integer.parseInt(arguments.trim());
             return new DeleteCommand(index - 1);
@@ -78,7 +77,7 @@ public class Parser {
         }
     }
 
-    public static Command prepareMark(String arguments) {
+    private static Command prepareMark(String arguments) {
         try {
             int index = Integer.parseInt(arguments.trim());
             return new MarkCommand(index - 1);
@@ -87,7 +86,7 @@ public class Parser {
         }
     }
 
-    public static Command prepareUnmark(String arguments) {
+    private static Command prepareUnmark(String arguments) {
         try {
             int index = Integer.parseInt(arguments.trim());
             return new UnmarkCommand(index - 1);
