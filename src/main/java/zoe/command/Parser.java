@@ -14,7 +14,7 @@ public class Parser {
         if (!matcher.matches()) {
             return new IncorrectCommand();
         }
-        
+
         String commandWord = matcher.group("commandWord");
         String arguments = matcher.group("arguments").trim();
         return switch (commandWord) {

@@ -8,8 +8,8 @@ import zoe.ui.Ui;
 
 public class Zoe {
     private final Storage storage;
-    private TaskList taskList;
     private final Ui ui;
+    private TaskList taskList;
 
     public Zoe(String filePath) {
         ui = new Ui();
@@ -19,6 +19,10 @@ public class Zoe {
         } catch (ZoeIOException e) {
             taskList = new TaskList();
         }
+    }
+
+    public static void main(String[] args) {
+        new Zoe("data/zoe.txt").run();
     }
 
     public void run() {
@@ -37,9 +41,5 @@ public class Zoe {
                 ui.showDividerLine();
             }
         }
-    }
-
-    public static void main(String[] args) {
-        new Zoe("data/zoe.txt").run();
     }
 }

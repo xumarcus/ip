@@ -4,10 +4,6 @@ import lombok.Data;
 
 @Data
 public abstract class Task {
-    public enum TaskStatus {
-        DONE,
-        UNDONE
-    }
     protected TaskStatus status = TaskStatus.UNDONE;
 
     public String getStatusIcon() {
@@ -31,5 +27,10 @@ public abstract class Task {
 
     public String getFullDescription() {
         return String.format("[%s][%s] %s", getTypeIcon(), getStatusIcon(), getDescription());
+    }
+
+    public enum TaskStatus {
+        DONE,
+        UNDONE
     }
 }

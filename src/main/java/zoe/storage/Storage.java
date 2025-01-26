@@ -11,7 +11,13 @@ import zoe.adapters.gson.TaskTypeAdapter;
 import zoe.task.Task;
 import zoe.task.TaskList;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.Writer;
 import java.util.List;
 
 @AllArgsConstructor
@@ -37,7 +43,8 @@ public class Storage {
 
     public List<Task> load() throws ZoeIOException {
         try (Reader reader = new FileReader(path)) {
-            List<Task> tasks = gson.fromJson(reader, new TypeToken<List<Task>>(){}.getType());
+            List<Task> tasks = gson.fromJson(reader, new TypeToken<List<Task>>() {
+            }.getType());
             if (tasks == null) throw new ZoeIOException("File is empty");
             return tasks;
         } catch (FileNotFoundException e) {

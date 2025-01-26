@@ -11,6 +11,7 @@ import java.util.Scanner;
 @NoArgsConstructor
 public class Ui {
     private static final Scanner scanner = new Scanner(System.in);
+
     public String readCommand() {
         return scanner.nextLine().trim();
     }
@@ -44,7 +45,7 @@ public class Ui {
     }
 
     public void showList(TaskList taskList) {
-        for (ListIterator<Task> iter = taskList.listIterator(); iter.hasNext();) {
+        for (ListIterator<Task> iter = taskList.listIterator(); iter.hasNext(); ) {
             System.out.printf("%d. %s\n", iter.nextIndex() + 1, iter.next().getFullDescription());
         }
     }
