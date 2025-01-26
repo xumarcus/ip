@@ -5,10 +5,19 @@ import java.time.format.DateTimeParseException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-// https://github.com/se-edu/addressbook-level2/blob/master/src/seedu/addressbook/parser/Parser.java
+/**
+ * The {@code Parser} class processes user inputs and converts them into executable {@code Command} objects.
+ * It supports various command formats for a task management application.
+ */
 public class Parser {
     public static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
 
+    /**
+     * Parses the full user input command and returns the corresponding {@code Command}.
+     *
+     * @param fullCommand The raw string input entered by the user.
+     * @return A {@code Command} object representing the user's intent.
+     */
     public static Command parse(String fullCommand) {
         Matcher matcher = BASIC_COMMAND_FORMAT.matcher(fullCommand);
         if (!matcher.matches()) {
@@ -30,6 +39,12 @@ public class Parser {
         };
     }
 
+    /**
+     * Prepares a {@code TodoCommand} after validating the provided arguments.
+     *
+     * @param arguments The description of the todo task.
+     * @return A {@code TodoCommand} object if arguments are valid, otherwise an {@code IncorrectCommand}.
+     */
     private static Command prepareTodo(String arguments) {
         if (arguments.isEmpty()) {
             return new IncorrectCommand("OOPS!!! The description of a todo cannot be empty.");
@@ -37,6 +52,12 @@ public class Parser {
         return new TodoCommand(arguments);
     }
 
+    /**
+     * Prepares a {@code DeadlineCommand} after validating and parsing the provided arguments.
+     *
+     * @param arguments The description and deadline of the task, formatted as "task /by YYYY-MM-DD".
+     * @return A {@code DeadlineCommand} object if arguments are valid, otherwise an {@code IncorrectCommand}.
+     */
     private static Command prepareDeadline(String arguments) {
         final Pattern PATTERN = Pattern.compile("^(.+) /by (\\d{4}-\\d{2}-\\d{2})$");
         Matcher matcher = PATTERN.matcher(arguments);
@@ -52,6 +73,12 @@ public class Parser {
         return new IncorrectCommand();
     }
 
+    /**
+     * Prepares an {@code EventCommand} after validating and parsing the provided arguments.
+     *
+     * @param arguments The description, start date, and end date of the event, formatted as "task /from YYYY-MM-DD /to YYYY-MM-DD".
+     * @return An {@code EventCommand} object if arguments are valid, otherwise an {@code IncorrectCommand}.
+     */
     private static Command prepareEvent(String arguments) {
         final Pattern PATTERN = Pattern.compile("^(.+) /from (\\d{4}-\\d{2}-\\d{2}) /to (\\d{4}-\\d{2}-\\d{2})$");
         Matcher matcher = PATTERN.matcher(arguments);
@@ -68,6 +95,12 @@ public class Parser {
         return new IncorrectCommand();
     }
 
+    /**
+     * Prepares a {@code DeleteCommand} after validating the provided arguments.
+     *
+     * @param arguments The index of the task to delete.
+     * @return A {@code DeleteCommand} object if arguments are valid, otherwise an {@code IncorrectCommand}.
+     */
     private static Command prepareDelete(String arguments) {
         try {
             int index = Integer.parseInt(arguments.trim());
@@ -77,6 +110,12 @@ public class Parser {
         }
     }
 
+    /**
+     * Prepares a {@code MarkCommand} after validating the provided arguments.
+     *
+     * @param arguments The index of the task to mark as completed.
+     * @return A {@code MarkCommand} object if arguments are valid, otherwise an {@code IncorrectCommand}.
+     */
     private static Command prepareMark(String arguments) {
         try {
             int index = Integer.parseInt(arguments.trim());
@@ -86,6 +125,12 @@ public class Parser {
         }
     }
 
+    /**
+     * Prepares an {@code UnmarkCommand} after validating the provided arguments.
+     *
+     * @param arguments The index of the task to unmark as completed.
+     * @return An {@code UnmarkCommand} object if arguments are valid, otherwise an {@code IncorrectCommand}.
+     */
     private static Command prepareUnmark(String arguments) {
         try {
             int index = Integer.parseInt(arguments.trim());

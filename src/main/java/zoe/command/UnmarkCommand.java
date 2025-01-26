@@ -8,6 +8,12 @@ import zoe.task.Task;
 import zoe.task.TaskList;
 import zoe.ui.Ui;
 
+/**
+ * Represents a command to unmark a task as undone in the task list.
+ * <p>
+ * Executes the operation of marking a task as undone, updating the storage,
+ * and displaying the updated task status via the UI.
+ */
 @Getter
 @AllArgsConstructor
 public class UnmarkCommand implements Command {

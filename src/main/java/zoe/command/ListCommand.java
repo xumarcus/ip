@@ -6,6 +6,10 @@ import zoe.storage.Storage;
 import zoe.task.TaskList;
 import zoe.ui.Ui;
 
+/**
+ * Represents a command to list all tasks in the task list.
+ * This command calls the {@link Ui} to display the current tasks stored in the {@link TaskList}.
+ */
 @Getter
 @NoArgsConstructor
 public class ListCommand implements Command {

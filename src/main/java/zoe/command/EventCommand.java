@@ -11,6 +11,12 @@ import zoe.ui.Ui;
 
 import java.time.LocalDate;
 
+/**
+ * Represents a command to add an event task to the task list.
+ * This command is responsible for creating an {@link Event} task with a name, start date, and end date.
+ * After creating the task, it adds it to the {@link TaskList}, saves the updated task list to storage,
+ * and displays a message via the {@link Ui}.
+ */
 @Getter
 @AllArgsConstructor
 public class EventCommand implements Command {

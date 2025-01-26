@@ -11,6 +11,11 @@ import zoe.ui.Ui;
 
 import java.time.LocalDate;
 
+/**
+ * Represents a command to add a deadline task.
+ * Executes the addition of a {@link Deadline} to the task list and saves it to storage.
+ * Displays feedback on the action performed.
+ */
 @Getter
 @AllArgsConstructor
 public class DeadlineCommand implements Command {

@@ -8,6 +8,11 @@ import zoe.task.Task;
 import zoe.task.TaskList;
 import zoe.ui.Ui;
 
+/**
+ * Represents a command to delete a task at a specified index from the task list.
+ * The command removes the task, updates the storage, and displays the removed task
+ * information to the user.
+ */
 @Getter
 @AllArgsConstructor
 public class DeleteCommand implements Command {
