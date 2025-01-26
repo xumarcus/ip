@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
  * Extends the {@code Task} class to inherit common task properties.
  * Includes methods for getting the task type icon and formatted description.
  *
- * @author
+ * @author xumarcus
  */
 public class Event extends Task {
     private final LocalDate from;
