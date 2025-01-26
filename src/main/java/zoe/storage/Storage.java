@@ -1,22 +1,28 @@
+package zoe.storage;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 import lombok.AllArgsConstructor;
+import zoe.ZoeIOException;
+import zoe.adapters.gson.TaskTypeAdapter;
+import zoe.task.Task;
+import zoe.task.TaskList;
 
 import java.io.*;
 import java.util.List;
 
 @AllArgsConstructor
 public class Storage {
-    // Call registerTypeAdapter(LocalDate.class, new LocalDateTypeAdapter()) in TaskTypeAdapter!
+    // Call registerTypeAdapter(LocalDate.class, new zoe.adapters.gson.LocalDateTypeAdapter()) in zoe.adapters.gson.TaskTypeAdapter!
     private final static Gson gson = new GsonBuilder()
             .registerTypeHierarchyAdapter(Task.class, new TaskTypeAdapter())
             .create();
     private final String path;
 
-    void save(TaskList taskList) throws ZoeIOException {
+    public void save(TaskList taskList) throws ZoeIOException {
         File file = new File(path);
 
         //noinspection ResultOfMethodCallIgnored
@@ -29,7 +35,7 @@ public class Storage {
         }
     }
 
-    List<Task> load() throws ZoeIOException {
+    public List<Task> load() throws ZoeIOException {
         try (Reader reader = new FileReader(path)) {
             List<Task> tasks = gson.fromJson(reader, new TypeToken<List<Task>>(){}.getType());
             if (tasks == null) throw new ZoeIOException("File is empty");

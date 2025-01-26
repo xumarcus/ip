@@ -1,17 +1,21 @@
-import lombok.AllArgsConstructor;
+package zoe.command;
 
-import java.time.LocalDate;
+import lombok.AllArgsConstructor;
+import zoe.ZoeException;
+import zoe.storage.Storage;
+import zoe.task.Task;
+import zoe.task.TaskList;
+import zoe.task.Todo;
+import zoe.ui.Ui;
 
 @AllArgsConstructor
-public class EventCommand implements Command {
-    public static final String COMMAND_WORD = "event";
+public class TodoCommand implements Command {
+    public static final String COMMAND_WORD = "todo";
     private final String taskName;
-    private final LocalDate from;
-    private final LocalDate to;
 
     @Override
     public void execute(Storage storage, TaskList taskList, Ui ui) throws ZoeException {
-        Task task = new Event(taskName, from, to);
+        Task task = new Todo(taskName);
         taskList.add(task);
         storage.save(taskList);
         ui.showAddedTask(taskList, task);

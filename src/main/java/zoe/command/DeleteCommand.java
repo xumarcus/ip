@@ -1,4 +1,11 @@
+package zoe.command;
+
 import lombok.AllArgsConstructor;
+import zoe.ZoeException;
+import zoe.storage.Storage;
+import zoe.task.Task;
+import zoe.task.TaskList;
+import zoe.ui.Ui;
 
 @AllArgsConstructor
 public class DeleteCommand implements Command {
