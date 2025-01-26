@@ -35,6 +35,7 @@ public class Parser {
             case MarkCommand.COMMAND_WORD -> prepareMark(arguments);
             case UnmarkCommand.COMMAND_WORD -> prepareUnmark(arguments);
             case ByeCommand.COMMAND_WORD -> new ByeCommand();
+            case FindCommand.COMMAND_WORD -> prepareFind(arguments);
             default -> new IncorrectCommand();
         };
     }
@@ -138,5 +139,12 @@ public class Parser {
         } catch (NumberFormatException e) {
             return new IncorrectCommand();
         }
+    }
+
+    private static Command prepareFind(String arguments) {
+        if (arguments.isEmpty()) {
+            return new IncorrectCommand("OOPS!!! The description of a find cannot be empty.");
+        }
+        return new FindCommand(arguments);
     }
 }

@@ -1,13 +1,21 @@
 package zoe.task;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 /**
  * Represents an abstract task with status management capabilities.
  * Acts as a base class for all types of tasks.
  */
-@Data
+
 public abstract class Task {
+    public enum TaskStatus {
+        DONE,
+        UNDONE
+    }
+    @Getter
+    protected final String taskName;
     /**
      * Represents the current status of the task.
      * Defaults to UNDONE when a task is created.

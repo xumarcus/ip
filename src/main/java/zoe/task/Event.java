@@ -21,6 +21,12 @@ public class Event extends Task {
     private final LocalDate from;
     private final LocalDate to;
 
+    public Event(String taskName, LocalDate from, LocalDate to) {
+        super(taskName);
+        this.from = from;
+        this.to = to;
+    }
+
     /**
      * Returns the type icon of this task.
      *
