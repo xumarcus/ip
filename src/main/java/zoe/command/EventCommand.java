@@ -1,6 +1,7 @@
 package zoe.command;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import zoe.ZoeException;
 import zoe.storage.Storage;
 import zoe.task.Event;
@@ -10,6 +11,7 @@ import zoe.ui.Ui;
 
 import java.time.LocalDate;
 
+@Getter
 @AllArgsConstructor
 public class EventCommand implements Command {
     public static final String COMMAND_WORD = "event";

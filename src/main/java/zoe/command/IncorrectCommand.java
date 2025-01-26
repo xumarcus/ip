@@ -1,12 +1,14 @@
 package zoe.command;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import zoe.ZoeException;
 import zoe.storage.Storage;
 import zoe.task.TaskList;
 import zoe.ui.Ui;
 
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class IncorrectCommand implements Command {

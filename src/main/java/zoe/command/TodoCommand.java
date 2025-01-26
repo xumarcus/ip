@@ -1,6 +1,7 @@
 package zoe.command;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import zoe.ZoeException;
 import zoe.storage.Storage;
 import zoe.task.Task;
@@ -8,6 +9,7 @@ import zoe.task.TaskList;
 import zoe.task.Todo;
 import zoe.ui.Ui;
 
+@Getter
 @AllArgsConstructor
 public class TodoCommand implements Command {
     public static final String COMMAND_WORD = "todo";
