@@ -1,13 +1,16 @@
 package zoe.task;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
-@Data
+@RequiredArgsConstructor
 public abstract class Task {
     public enum TaskStatus {
         DONE,
         UNDONE
     }
+    @Getter
+    protected final String taskName;
     protected TaskStatus status = TaskStatus.UNDONE;
 
     public String getStatusIcon() {

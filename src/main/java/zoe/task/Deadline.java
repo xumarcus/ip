@@ -1,16 +1,15 @@
 package zoe.task;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-@EqualsAndHashCode(callSuper = true)
-@Data
 public class Deadline extends Task {
-    private final String taskName;
     private final LocalDate by;
+
+    public Deadline(String taskName, LocalDate by) {
+        super(taskName);
+        this.by = by;
+    }
 
     @Override
     public String getTypeIcon() {

@@ -1,12 +1,9 @@
 package zoe.task;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
-@EqualsAndHashCode(callSuper = true)
-@Data
 public class Todo extends Task {
-    private final String taskName;
+    public Todo(String taskName) {
+        super(taskName);
+    }
 
     @Override
     public String getTypeIcon() {

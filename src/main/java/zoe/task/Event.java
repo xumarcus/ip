@@ -1,17 +1,17 @@
 package zoe.task;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-@EqualsAndHashCode(callSuper = true)
-@Data
 public class Event extends Task {
-    private final String taskName;
     private final LocalDate from;
     private final LocalDate to;
+
+    public Event(String taskName, LocalDate from, LocalDate to) {
+        super(taskName);
+        this.from = from;
+        this.to = to;
+    }
 
     @Override
     public String getTypeIcon() {
