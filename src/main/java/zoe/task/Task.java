@@ -9,15 +9,6 @@ import lombok.Data;
 @Data
 public abstract class Task {
     /**
-     * Enum representing the status of a task.
-     * A task can either be marked as DONE or UNDONE.
-     */
-    public enum TaskStatus {
-        DONE,
-        UNDONE
-    }
-
-    /**
      * Represents the current status of the task.
      * Defaults to UNDONE when a task is created.
      */
@@ -72,5 +63,14 @@ public abstract class Task {
      */
     public String getFullDescription() {
         return String.format("[%s][%s] %s", getTypeIcon(), getStatusIcon(), getDescription());
+    }
+
+    /**
+     * Enum representing the status of a task.
+     * A task can either be marked as DONE or UNDONE.
+     */
+    public enum TaskStatus {
+        DONE,
+        UNDONE
     }
 }
