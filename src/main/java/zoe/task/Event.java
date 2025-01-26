@@ -1,8 +1,5 @@
 package zoe.task;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -14,10 +11,7 @@ import java.time.format.DateTimeFormatter;
  *
  * @author
  */
-@EqualsAndHashCode(callSuper = true)
-@Data
 public class Event extends Task {
-    private final String taskName;
     private final LocalDate from;
     private final LocalDate to;
 

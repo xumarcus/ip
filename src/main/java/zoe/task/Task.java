@@ -3,17 +3,12 @@ package zoe.task;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 /**
  * Represents an abstract task with status management capabilities.
  * Acts as a base class for all types of tasks.
  */
-
+@RequiredArgsConstructor
 public abstract class Task {
-    public enum TaskStatus {
-        DONE,
-        UNDONE
-    }
     @Getter
     protected final String taskName;
     /**
