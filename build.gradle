@@ -43,6 +43,6 @@ shadowJar {
     archiveVersion = "v0.1"
 }
 
-run{
+run {
     standardInput = System.in
 }
