@@ -15,6 +15,13 @@ public class Event extends Task {
     private final LocalDate from;
     private final LocalDate to;
 
+    /**
+     * Constructs an {@code Event} task with the specified task name, start date, and end date.
+     *
+     * @param taskName The name or description of the event task.
+     * @param from The start date of the event, represented as a {@code LocalDate}.
+     * @param to The end date of the event, represented as a {@code LocalDate}
+     */
     public Event(String taskName, LocalDate from, LocalDate to) {
         super(taskName);
         this.from = from;
