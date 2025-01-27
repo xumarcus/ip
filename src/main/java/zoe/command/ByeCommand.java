@@ -17,9 +17,7 @@ public class ByeCommand implements Command {
     public static final String COMMAND_WORD = "bye";
 
     @Override
-    public void execute(Storage storage, TaskList taskList, Ui ui) {
-        ui.showGoodbye();
-    }
+    public void execute(Storage storage, TaskList taskList, Ui ui) {}
 
     @Override
     public boolean isExit() {
