@@ -3,7 +3,6 @@ package zoe.command;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import zoe.ZoeException;
 import zoe.storage.Storage;
 import zoe.task.TaskList;
 import zoe.ui.Ui;
@@ -14,8 +13,6 @@ import zoe.ui.Ui;
  * This command is executed when the user enters input that does not correspond
  * to any valid command.
  * </p>
- *
- * @param message The message to display when the command is executed.
  */
 @Getter
 @NoArgsConstructor
@@ -29,11 +26,10 @@ public class IncorrectCommand implements Command {
      * @param storage  The storage object to handle data persistence (unused in this command).
      * @param taskList The current list of tasks (unused in this command).
      * @param ui       The UI object to communicate with the user.
-     * @throws ZoeException If an error occurs during execution.
      */
     @Override
-    public void execute(Storage storage, TaskList taskList, Ui ui) throws ZoeException {
-        ui.showMessage(message);
+    public void execute(Storage storage, TaskList taskList, Ui ui) {
+        ui.reply(message);
     }
 
     /**
