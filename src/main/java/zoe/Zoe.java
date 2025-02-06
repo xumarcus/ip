@@ -34,7 +34,7 @@ public class Zoe extends Application {
         storage = new Storage(filePath);
         try {
             taskList = new TaskList(storage.load());
-        } catch (ZoeIOException e) {
+        } catch (ZoeIoException e) {
             taskList = new TaskList();
         }
     }
