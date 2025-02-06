@@ -27,16 +27,16 @@ public class Parser {
         String commandWord = matcher.group("commandWord");
         String arguments = matcher.group("arguments").trim();
         return switch (commandWord) {
-            case TodoCommand.COMMAND_WORD -> prepareTodo(arguments);
-            case DeadlineCommand.COMMAND_WORD -> prepareDeadline(arguments);
-            case EventCommand.COMMAND_WORD -> prepareEvent(arguments);
-            case ListCommand.COMMAND_WORD -> new ListCommand();
-            case DeleteCommand.COMMAND_WORD -> prepareDelete(arguments);
-            case MarkCommand.COMMAND_WORD -> prepareMark(arguments);
-            case UnmarkCommand.COMMAND_WORD -> prepareUnmark(arguments);
-            case ByeCommand.COMMAND_WORD -> new ByeCommand();
-            case FindCommand.COMMAND_WORD -> prepareFind(arguments);
-            default -> new IncorrectCommand();
+        case TodoCommand.COMMAND_WORD -> prepareTodo(arguments);
+        case DeadlineCommand.COMMAND_WORD -> prepareDeadline(arguments);
+        case EventCommand.COMMAND_WORD -> prepareEvent(arguments);
+        case ListCommand.COMMAND_WORD -> new ListCommand();
+        case DeleteCommand.COMMAND_WORD -> prepareDelete(arguments);
+        case MarkCommand.COMMAND_WORD -> prepareMark(arguments);
+        case UnmarkCommand.COMMAND_WORD -> prepareUnmark(arguments);
+        case ByeCommand.COMMAND_WORD -> new ByeCommand();
+        case FindCommand.COMMAND_WORD -> prepareFind(arguments);
+        default -> new IncorrectCommand();
         };
     }
 
@@ -60,8 +60,8 @@ public class Parser {
      * @return A {@code DeadlineCommand} object if arguments are valid, otherwise an {@code IncorrectCommand}.
      */
     private static Command prepareDeadline(String arguments) {
-        final Pattern PATTERN = Pattern.compile("^(.+) /by (\\d{4}-\\d{2}-\\d{2})$");
-        Matcher matcher = PATTERN.matcher(arguments);
+        final Pattern pattern = Pattern.compile("^(.+) /by (\\d{4}-\\d{2}-\\d{2})$");
+        Matcher matcher = pattern.matcher(arguments);
         if (matcher.matches()) {
             String taskName = matcher.group(1);
             try {
@@ -77,12 +77,12 @@ public class Parser {
     /**
      * Prepares an {@code EventCommand} after validating and parsing the provided arguments.
      *
-     * @param arguments The description, start date, and end date of the event, formatted as "task /from YYYY-MM-DD /to YYYY-MM-DD".
+     * @param arguments The description, start date, and end date of the event.
      * @return An {@code EventCommand} object if arguments are valid, otherwise an {@code IncorrectCommand}.
      */
     private static Command prepareEvent(String arguments) {
-        final Pattern PATTERN = Pattern.compile("^(.+) /from (\\d{4}-\\d{2}-\\d{2}) /to (\\d{4}-\\d{2}-\\d{2})$");
-        Matcher matcher = PATTERN.matcher(arguments);
+        final Pattern pattern = Pattern.compile("^(.+) /from (\\d{4}-\\d{2}-\\d{2}) /to (\\d{4}-\\d{2}-\\d{2})$");
+        Matcher matcher = pattern.matcher(arguments);
         if (matcher.matches()) {
             String taskName = matcher.group(1);
             try {

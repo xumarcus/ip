@@ -25,8 +25,8 @@ public abstract class Task {
      */
     public String getStatusIcon() {
         return switch (status) {
-            case DONE -> "X";
-            case UNDONE -> " ";
+        case DONE -> "X";
+        case UNDONE -> " ";
         };
     }
 

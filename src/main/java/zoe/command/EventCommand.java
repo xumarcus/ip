@@ -1,5 +1,7 @@
 package zoe.command;
 
+import java.time.LocalDate;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import zoe.ZoeException;
@@ -8,8 +10,6 @@ import zoe.task.Event;
 import zoe.task.Task;
 import zoe.task.TaskList;
 import zoe.ui.Ui;
-
-import java.time.LocalDate;
 
 /**
  * Represents a command to add an event task to the task list.

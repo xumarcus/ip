@@ -1,9 +1,9 @@
 package zoe.task;
 
-import lombok.NoArgsConstructor;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import lombok.NoArgsConstructor;
 
 /**
  * Represents a list of tasks that extends the ArrayList class.
