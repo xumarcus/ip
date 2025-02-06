@@ -18,6 +18,7 @@ import zoe.ui.Ui;
 @AllArgsConstructor
 public class TodoCommand implements Command {
     public static final String COMMAND_WORD = "todo";
+    public static final String ALIAS = "t";
     private final String taskName;
 
     @Override

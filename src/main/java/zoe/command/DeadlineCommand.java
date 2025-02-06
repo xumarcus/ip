@@ -20,6 +20,7 @@ import zoe.ui.Ui;
 @AllArgsConstructor
 public class DeadlineCommand implements Command {
     public static final String COMMAND_WORD = "deadline";
+    public static final String ALIAS = "d";
     private final String taskName;
     private final LocalDate by;
 
