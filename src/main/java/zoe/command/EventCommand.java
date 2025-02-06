@@ -21,6 +21,7 @@ import zoe.ui.Ui;
 @AllArgsConstructor
 public class EventCommand implements Command {
     public static final String COMMAND_WORD = "event";
+    public static final String ALIAS = "e";
     private final String taskName;
     private final LocalDate from;
     private final LocalDate to;

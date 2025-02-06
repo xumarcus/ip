@@ -5,6 +5,8 @@ import java.time.format.DateTimeParseException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import zoe.task.Todo;
+
 /**
  * The {@code Parser} class processes user inputs and converts them into executable {@code Command} objects.
  * It supports various command formats for a task management application.
@@ -27,9 +29,9 @@ public class Parser {
         String commandWord = matcher.group("commandWord");
         String arguments = matcher.group("arguments").trim();
         return switch (commandWord) {
-        case TodoCommand.COMMAND_WORD -> prepareTodo(arguments);
-        case DeadlineCommand.COMMAND_WORD -> prepareDeadline(arguments);
-        case EventCommand.COMMAND_WORD -> prepareEvent(arguments);
+        case TodoCommand.COMMAND_WORD, TodoCommand.ALIAS -> prepareTodo(arguments);
+        case DeadlineCommand.COMMAND_WORD, DeadlineCommand.ALIAS -> prepareDeadline(arguments);
+        case EventCommand.COMMAND_WORD, EventCommand.ALIAS -> prepareEvent(arguments);
         case ListCommand.COMMAND_WORD -> new ListCommand();
         case DeleteCommand.COMMAND_WORD -> prepareDelete(arguments);
         case MarkCommand.COMMAND_WORD -> prepareMark(arguments);
