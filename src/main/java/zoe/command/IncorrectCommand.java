@@ -18,7 +18,7 @@ import zoe.ui.Ui;
 @NoArgsConstructor
 @AllArgsConstructor
 public class IncorrectCommand implements Command {
-    private String message = "OOPS!!! I'm sorry, but I don't know what that means :-(";
+    private String errorMessage = "OOPS!!! I'm sorry, but I don't know what that means :-(";
 
     /**
      * Executes the command by displaying the predefined error message to the user.
@@ -29,7 +29,7 @@ public class IncorrectCommand implements Command {
      */
     @Override
     public void execute(Storage storage, TaskList taskList, Ui ui) {
-        ui.reply(message);
+        ui.reply(errorMessage);
     }
 
     /**
