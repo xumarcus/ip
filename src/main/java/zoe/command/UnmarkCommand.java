@@ -22,6 +22,7 @@ public class UnmarkCommand implements Command {
 
     @Override
     public void execute(Storage storage, TaskList taskList, Ui ui) throws ZoeException {
+        assert(0 <= index && index < taskList.size());
         Task task = taskList.get(index);
         task.markAsUndone();
         storage.save(taskList);
