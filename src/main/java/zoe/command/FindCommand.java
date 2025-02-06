@@ -46,6 +46,7 @@ public class FindCommand implements Command {
      */
     @Override
     public void execute(Storage storage, TaskList taskList, Ui ui) {
+        // Use the Streams feature of Java
         List<Task> matchingTasks = taskList.stream()
                 .filter(task -> task.getTaskName().contains(keyword))
                 .collect(Collectors.toList());
