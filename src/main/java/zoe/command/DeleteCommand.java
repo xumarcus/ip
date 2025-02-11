@@ -21,6 +21,9 @@ public class DeleteCommand implements Command {
 
     @Override
     public void execute(Storage storage, TaskList taskList, Ui ui) throws ZoeException {
+        if (!(0 <= index && index < taskList.size())) {
+            throw new ZoeException("Incorrect index");
+        }
         Task task = taskList.remove(index);
         storage.save(taskList);
         ui.showRemovedTask(taskList, task);
