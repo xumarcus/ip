@@ -31,11 +31,9 @@ import zoe.task.Task;
  *     .create();
  * </pre>
  * </p>
- * <p>
- * See also:
- * <a href="https://www.baeldung.com/gson-polymorphism">Gson Polymorphism - Baeldung</a>
- * </p>
  */
+// @@author xumarcus-reused
+// Reused from https://www.baeldung.com/gson-polymorphism
 public class TaskTypeAdapter implements JsonSerializer<Task>, JsonDeserializer<Task> {
     private static final Gson gson = new GsonBuilder()
             .registerTypeAdapter(LocalDate.class, new LocalDateTypeAdapter())
@@ -87,3 +85,4 @@ public class TaskTypeAdapter implements JsonSerializer<Task>, JsonDeserializer<T
         }
     }
 }
+// @@author

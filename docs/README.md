@@ -78,3 +78,14 @@ Example: `find book`
 
 Expected Outcome:
 - The chatbot displays all tasks containing the keyword "book."
+
+## Acknowledgements
+- [x] Third party libraries: [Lombok](https://projectlombok.org/), [Gson](https://github.com/google/gson)
+- [x] Reused code snippets found on the Internet: see `zoe.adapters.gson`
+- [x] Referred code in another software: see [Parser.java](https://github.com/se-edu/addressbook-level2/blob/master/src/seedu/addressbook/parser/Parser.java) in `addressbook-level2`
+- [ ] Referred code by current/past student
+- [ ] Credit for reused images outside of teaching materials
+- [x] Citing the use of AI-generated/assisted work:
+  - Which tool: ChatGPT, DeepSeek, IntelliJ AI
+  - Who used it: Me
+  - The extent of use: Generate JavaDoc comments and user guide and regexes

@@ -25,8 +25,9 @@ import com.google.gson.JsonSerializer;
  *     .create();
  * </pre>
  * </p>
- *
  */
+// @@author xumarcus-reused
+// Reused from https://mkyong.com/java/gson-supports-java-8-date-time-types
 public class LocalDateTypeAdapter implements JsonSerializer<LocalDate>, JsonDeserializer<LocalDate> {
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
@@ -58,3 +59,4 @@ public class LocalDateTypeAdapter implements JsonSerializer<LocalDate>, JsonDese
         return LocalDate.parse(jsonElement.getAsJsonPrimitive().getAsString(), formatter);
     }
 }
+// @@author
